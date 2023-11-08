@@ -14,7 +14,7 @@
       ansible.builtin.file:
         path: /usr/share/nginx/html
         state: absent
-    - name: C3eat  Nginx Dir
+    - name: Creat  Nginx Dir
       ansible.builtin.file:
           path: /usr/share/nginx/html
           state: directory
