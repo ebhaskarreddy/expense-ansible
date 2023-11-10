@@ -8,13 +8,13 @@
     src: expense.conf
     dest: /etc/nginx/default.d/expense.conf
 
-- name: Import Common Role - APP Pre-requisities
+- name: Import Common Role - APP Pre-requisites
   ansible.builtin.import_role:
     name: common
     tasks_from: app-prereq
-    vars:
-      app_dir: /app
-      component: frontend
+  vars:
+    app_dir: /usr/share/nginx/html
+    component: frontend
 
 - name: Start Nginx Service
   ansible.builtin.systemd:
