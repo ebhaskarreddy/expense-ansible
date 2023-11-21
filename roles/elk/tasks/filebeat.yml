@@ -1,8 +1,9 @@
+  when: is_rsyslog_needed
 - name: Copy Rsyslog File
   ansible.builtin.template:
     src: rsyslog.conf
     dest: /etc/rsyslog.d/{{component}}.conf
-  when: is_rsyslog_needed
+
 
 - name: Restart rsyslog service
   ansible.builtin.systemd:
