@@ -1,3 +1,3 @@
 component: backend
 log_file: /var/log/nginx/backend.log
-is_rsysylog_needed: yes
+is_rsyslog_needed: yes
