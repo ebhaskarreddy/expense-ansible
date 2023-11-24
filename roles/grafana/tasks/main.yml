@@ -3,10 +3,11 @@
     src: dashboard.json
     dest: /tmp/dashboard.json
 
-- name: Import Grafana dashboard foo
+- name: Import Grafana dashboard
   community.grafana.grafana_dashboard:
       grafana_url: http://172.31.33.183:3000
-      grafana_api_key: "{{ lookup('amazon.aws.aws_ssm', 'grafana.api_key', region='us-east-1' ) }}"
+    #  grafana_api_key: "{{ lookup('amazon.aws.aws_ssm', 'grafana.api_key', region='us-east-1' ) }}"
+      grafana_api_key: "glsa_W6IXSUbgv4Qnr8XcagWGoRv6jaa5VDh9_c804a0f1"
       state: present
       commit_message: Updated by ansible
       overwrite: yes

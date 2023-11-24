@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -33,12 +33,11 @@
             {
               "options": {
                 "0": {
-                  "index": 1,
+                  "index": 2,
                   "text": "DOWN"
                 },
                 "1": {
-                  "color": "dark-green",
-                  "index": 0,
+                  "index": 1,
                   "text": "UP"
                 }
               },
@@ -49,12 +48,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-green",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "dark-green",
-                "value": ""
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -63,8 +62,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 9,
+        "h": 5,
+        "w": 10,
         "x": 0,
         "y": 0
       },
@@ -92,9 +91,9 @@
             "uid": "c1dc3c04-71d7-42f5-8725-f42e5cad6688"
           },
           "editorMode": "code",
-          "expr": "up{name=\"{{component}}{{env}}\"}",
+          "expr": "up{name=\"frontend-dev\"}",
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
@@ -120,7 +119,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 30,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -162,9 +161,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 9,
-        "x": 11,
+        "h": 8,
+        "w": 11,
+        "x": 12,
         "y": 0
       },
       "id": 2,
@@ -187,11 +186,9 @@
             "uid": "c1dc3c04-71d7-42f5-8725-f42e5cad6688"
           },
           "editorMode": "code",
-          "expr": "(node_memory_MemFree_bytes{name=\"{{component}}{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}{{env}}\"} + node_memory_Cached_bytes{name=\"{{component}}{{env}}\"})/node_memory_MemTotal_bytes{name=\"{{component}}{{env}}\"}*100",
+          "expr": "(node_memory_MemFree_bytes{name=\"frontend-dev\"} + node_memory_Buffers_bytes{name=\"frontend-dev\"} + node_memory_Cached_bytes{name=\"frontend-dev\"})/ node_memory_MemTotal_bytes{name=\"frontend-dev\"} * 100",
           "instant": false,
-        {% raw %}
-        "legendFormat": "{{name}}",
-        {% endraw %}
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
@@ -200,16 +197,31 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 38,
   "tags": [],
   "templating": {
     "list": [
       {
+        "current": {},
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "query0",
+        "options": [],
+        "query": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
         "current": {
-          "selected": false,
-          "text": "default",
-          "value": "default"
+          "selected": true,
+          "text": "Prometheus",
+          "value": "c1dc3c04-71d7-42f5-8725-f42e5cad6688"
         },
         "hide": 0,
         "includeAll": false,
@@ -226,13 +238,13 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "{{component}}",
-  "uid": "da7f629a-f30f-47e1-a4b0-57c19cbf65c9",
-  "version": 7,
+  "title": "New dashboard",
+  "uid": "a375d526-217e-4a31-b806-69e3726ba11c",
+  "version": 5,
   "weekStart": ""
 }
