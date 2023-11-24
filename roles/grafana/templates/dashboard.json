@@ -25,7 +25,87 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "c43e8394-724b-44b5-8ca8-d0e35105f550"
+        "uid": "c1dc3c04-71d7-42f5-8725-f42e5cad6688"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": null
+              },
+              {
+                "color": "dark-green",
+                "value": ""
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c1dc3c04-71d7-42f5-8725-f42e5cad6688"
+          },
+          "editorMode": "code",
+          "expr": "up{name=\"frontend-dev\"}",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "UP",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c1dc3c04-71d7-42f5-8725-f42e5cad6688"
       },
       "fieldConfig": {
         "defaults": {
@@ -40,7 +120,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 27,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -82,9 +162,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
+        "h": 7,
+        "w": 9,
+        "x": 11,
         "y": 0
       },
       "id": 2,
@@ -104,79 +184,18 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "c43e8394-724b-44b5-8ca8-d0e35105f550"
+            "uid": "c1dc3c04-71d7-42f5-8725-f42e5cad6688"
           },
           "editorMode": "code",
-          "expr": "(node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes) / node_memory_MemTotal_bytes * 100",
+          "expr": "(node_memory_MemFree_bytes{name=\"frontend-dev\"}+ node_memory_Buffers_bytes{name=\"frontend-dev\"} + node_memory_Cached_bytes{name=\"frontend-dev\"})/node_memory_MemTotal_bytes{name=\"frontend-dev\"}*100",
           "instant": false,
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "memory used %",
+      "title": "Memory used %",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "c43e8394-724b-44b5-8ca8-d0e35105f550"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 8
-      },
-      "id": 1,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.2.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "c43e8394-724b-44b5-8ca8-d0e35105f550"
-          },
-          "editorMode": "code",
-          "expr": "up",
-          "instant": false,
-          "legendFormat": "{{instance}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "up",
-      "type": "stat"
     }
   ],
   "refresh": "",
@@ -187,8 +206,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Prometheus",
-          "value": "c43e8394-724b-44b5-8ca8-d0e35105f550"
+          "text": "default",
+          "value": "default"
         },
         "hide": 0,
         "includeAll": false,
@@ -211,7 +230,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "New dashboard",
-  "uid": "afa84d6a-e2dd-4c08-9d9a-2ccd6fd4ed95",
-  "version": 4,
+  "uid": "da7f629a-f30f-47e1-a4b0-57c19cbf65c9",
+  "version": 7,
   "weekStart": ""
 }
